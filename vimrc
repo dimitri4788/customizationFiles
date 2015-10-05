@@ -7,7 +7,11 @@
 "
 "================================================
 
+"Manage your 'runtimepath' with ease. In practical terms, pathogen.vim makes
+"it super easy to install plugins and runtime files in their own private
+"directories.  Link: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
+execute pathogen#infect()
 
 " Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -106,17 +110,11 @@ nnoremap <ESC><ESC> :noh<CR>
 "Always set status line
 set laststatus=2
 
-"Mapping some operations to Ctrl-key (type *unmap keyName where * is either
-"   i,v,n)
+"Mapping some operations to Ctrl-key (type *unmap keyName where * is either i,v,n)
 "imap <c-v> <esc>pi
 "nmap <c-v> p
-"
-"
 
-
-
-"Uncomment the following to have Vim jump to the last position when
-"reopening a file
+"Uncomment the following to have Vim jump to the last position when reopening a file
 if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
@@ -125,3 +123,14 @@ endif
 set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
+
+"It tells Vim to look for a tags file in the directory of the current file, in the current directory and up and up until your $HOME (that's the meaning of the semicolon), stopping on the first hit.
+set tags=./tags,tags;$HOME
+set tags=./tags;
+
+"Enter command-line mode without having to press the shift key
+nnoremap ; :
+vnoremap ; :
+
+"Save using :ww in addition to :w<cr>
+cmap ww w<cr>
