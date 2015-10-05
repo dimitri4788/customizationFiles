@@ -1,3 +1,12 @@
+"================================================
+"
+"  .vimrc - collection of vim configurations
+"
+"  Deep Aggarwal (deep.uiuc@gmail.com)
+"  Last modified  Oct 4, 2015
+"
+"================================================
+
 call pathogen#infect()
 
 " Vim settings, rather than Vi settings (much better!).

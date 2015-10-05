@@ -1,3 +1,12 @@
+#================================================
+#
+#  .bashrc - collection of bash configurations
+#
+#  Deep Aggarwal (deep.uiuc@gmail.com)
+#  Last modified  Oct 4, 2015
+#
+#================================================
+
 # System-wide .bashrc file for interactive bash(1) shells.
 if [ -z "$PS1" ]; then
    return
