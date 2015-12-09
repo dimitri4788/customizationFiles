@@ -1,6 +1,11 @@
-Author:         Deep Aggarwal  
-Description:    My customization files  
+Description
+-----------
+My customization files
 
 - .vimrc
 - .bashrc
 - .tmux.conf
+
+Author
+------
+Deep Aggarwal  
