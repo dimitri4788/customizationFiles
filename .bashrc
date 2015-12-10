@@ -19,9 +19,19 @@ export TERM=screen-256color
 #export CLICOLOR=1
 #alias ls='ls -color'
 PATH=$PATH:/Applications/gedit.app/Contents/MacOS/
-   
+
+#Show git information in status
+function parse_git_dirty
+{
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo ""
+}
+function parse_git_branch
+{
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/:[\1$(parse_git_dirty)]/"
+}
 #PS1='\h:\W \u\$ '
-PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$ '
+#PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$ '
+PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$(parse_git_branch)$ '
 
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
@@ -69,7 +79,29 @@ export PATH="/usr/local/heroku/bin:$PATH"
 #Add path to go_appengine
 export PATH=/Users/deep/go_appengine:$PATH
 
+### Add boost path
+export PATH="/usr/local/Cellar/boost/1.57.0/lib:$PATH"
+export PATH="/usr/local/Cellar/boost/1.57.0/include:$PATH"
+
+### gtk related
+export PKG_CONFIG_PATH="/usr/local/Cellar/cairo/1.14.2/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH"
+
 ### Execute the git autocomplete script if it exists
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+#Alias for Wolfram working directory
+alias wr="cd /Users/deep/Documents/wrProjects/licensing-server"
+
+#Add Postgres path
+PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+
+#Aliases to open and remove the database file for Licensing Server project XXX
+alias oo="open /Users/deep/Documents/wrProjects/licensing-server/lib/LSDB.db"
+alias rr="rm /Users/deep/Documents/wrProjects/licensing-server/lib/LSDB.db"
+
+#pushd and popd aliases
+alias pu="pushd ."
+alias po="popd"
