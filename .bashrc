@@ -62,6 +62,7 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 #Some of my aliases
+alias l='for file in * ; do echo "- "$file; done'
 alias ll="ls -lth"
 alias lla="ll -a"
 alias tn="tmux new -s"          #tmux new -s session_name           # make new named session
