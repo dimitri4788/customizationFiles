@@ -27,11 +27,12 @@ function parse_git_dirty
 }
 function parse_git_branch
 {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/:[\1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 #PS1='\h:\W \u\$ '
 #PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$ '
-PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$(parse_git_branch)$ '
+#PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$(parse_git_branch)$ '
+PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]:\[\e[34m\]$(parse_git_branch)\[\e[m\]$ '
 
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
