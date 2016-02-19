@@ -5,6 +5,7 @@ My customization files
 - .vimrc
 - .bashrc
 - .tmux.conf
+- .gitconfig
 
 Author
 ------

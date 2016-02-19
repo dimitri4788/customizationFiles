@@ -27,11 +27,12 @@ function parse_git_dirty
 }
 function parse_git_branch
 {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/:[\1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 #PS1='\h:\W \u\$ '
 #PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$ '
-PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$(parse_git_branch)$ '
+#PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]$(parse_git_branch)$ '
+PS1='[deep]:\[\e[1;36m\]\W\[\e[m\]:\[\e[34m\]$(parse_git_branch)\[\e[m\]$ '
 
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
@@ -61,6 +62,7 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 #Some of my aliases
+alias l='for file in * ; do echo "- "$file; done'
 alias ll="ls -lth"
 alias lla="ll -a"
 alias tn="tmux new -s"          #tmux new -s session_name           # make new named session

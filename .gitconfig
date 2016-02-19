@@ -1,0 +1,10 @@
+[user]
+	name = Deep Aggarwal
+    email = daggarwal@wolfram.com
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
