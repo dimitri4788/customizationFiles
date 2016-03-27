@@ -3,7 +3,7 @@
 #  .bashrc - collection of bash configurations
 #
 #  Deep Aggarwal (deep.uiuc@gmail.com)
-#  Last modified  Oct 4, 2015
+#  Last modified  March 27th, 2016
 #
 #================================================
 
@@ -15,9 +15,7 @@ fi
 #export TERM=xterm-color
 export TERM=screen-256color
 
-#Get color in "ls" command
 #export CLICOLOR=1
-#alias ls='ls -color'
 PATH=$PATH:/Applications/gedit.app/Contents/MacOS/
 
 #Show git information in status
@@ -50,6 +48,29 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
     PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
 fi
 
+# Handy Extract Program.
+function extract()
+{
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2)   tar xvjf $1     ;;
+			*.tar.gz)    tar xvzf $1     ;;
+			*.bz2)       bunzip2 $1      ;;
+			*.rar)       unrar x $1      ;;
+			*.gz)        gunzip $1       ;;
+			*.tar)       tar xvf $1      ;;
+			*.tbz2)      tar xvjf $1     ;;
+			*.tgz)       tar xvzf $1     ;;
+			*.zip)       unzip $1        ;;
+			*.Z)         uncompress $1   ;;
+			*.7z)        7z x $1         ;;
+			*)           echo "'$1' cannot be extracted via >extract<" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
+
 #Avoid duplicates..
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=100000                   # big big history
@@ -61,10 +82,13 @@ shopt -s histappend
 #After each command, save and reload history
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# LS AND DIRCOLORS
+LS_COMMON="-hBG"
+
 #Some of my aliases
-alias l='for file in * ; do echo "- "$file; done'
-alias ll="ls -lth"
-alias lla="ll -a"
+alias ls="ls $LS_COMMON"
+alias ll="ls -lth $LS_COMMON"
+alias lla="ll -a $LS_COMMON"
 alias tn="tmux new -s"          #tmux new -s session_name           # make new named session
 alias ta="tmux attach -t"       #tmux attach -t session_name        # attach to exist session (allowing shared sessions)
 alias tk="tmux kill-session -t" #tmux kill-session -t session_name  # kill named session
@@ -82,12 +106,13 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/Users/deep/go_appengine:$PATH
 
 ### Add boost path
-export PATH="/usr/local/Cellar/boost/1.57.0/lib:$PATH"
-export PATH="/usr/local/Cellar/boost/1.57.0/include:$PATH"
+export PATH="/usr/local/Cellar/boost/1.58.0/lib:$PATH"
+export PATH="/usr/local/Cellar/boost/1.58.0/include:$PATH"
 
 ### gtk related
-export PKG_CONFIG_PATH="/usr/local/Cellar/cairo/1.14.2/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH"
+#export PKG_CONFIG_PATH="/usr/local/Cellar/cairo/1.14.2/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH"
 
 ### Execute the git autocomplete script if it exists
 if [ -f ~/.git-completion.bash ]; then
@@ -107,3 +132,10 @@ alias rr="rm /Users/deep/Documents/wrProjects/licensing-server/lib/LSDB.db"
 #pushd and popd aliases
 alias pu="pushd ."
 alias po="popd"
+
+#GTK+ stuff
+export PATH="/Users/deep/.local/bin:$PATH"
+
+#Add PYTHONPATH
+#It augments the default search path for module files. The format is the same as the shell’s PATH.
+export PYTHONPATH="$PYTHONPATH:/usr/local/google_appengine"
