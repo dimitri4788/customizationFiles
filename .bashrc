@@ -86,6 +86,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 LS_COMMON="-hBG"
 
 #Some of my aliases
+alias l='for file in * ; do echo "- "$file; done'
 alias ls="ls $LS_COMMON"
 alias ll="ls -lth $LS_COMMON"
 alias lla="ll -a $LS_COMMON"
