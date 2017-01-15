@@ -22,7 +22,8 @@ set nocompatible
 "colorscheme xoria256
 set background=dark
 "let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
+colorscheme gruvbox
 
 "To show colors in vim-editor, e.g. this file is colorful
 syntax on
@@ -54,7 +55,7 @@ set incsearch
 if has("autocmd")
   "Enable file type detection
   filetype plugin indent on
-  
+
   "For all text files set 'textwidth' to 78 characters
  " autocmd FileType text setlocal textwidth=78
 
@@ -87,7 +88,7 @@ set shiftwidth=4
 set expandtab
 
 "Auto indent after a {
-set cindent 
+set cindent
 
 "Set <Tab> key insert 4 spaces
 "set softtabstop=4
@@ -134,4 +135,29 @@ nnoremap ; :
 vnoremap ; :
 
 "Save using :ww in addition to :w<cr>
-cmap ww w<cr>
+"cmap ww w<cr>
+
+""""""NERDTree configurations""""""""
+"""""""""""""""""""""""""""""""""""""
+"Window size of NERDTree
+let g:NERDTreeWinSize = 20
+"Shortcut to open NERDTree
+:command NE NERDTree
+"Open a NERDTree automatically when vim starts up
+autocmd vimenter * NERDTree
+
+""""""vim-javascript configurations""""""""
+"""""""""""""""""""""""""""""""""""""""""""
+"http://vimawesome.com/plugin/vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 0
+let g:javascript_plugin_flow = 1
+
+"Syntastic variables: http://vimawesome.com/plugin/syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0

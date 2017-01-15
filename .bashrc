@@ -86,9 +86,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 LS_COMMON="-hBG"
 
 #Some of my aliases
-alias l='for file in * ; do echo "- "$file; done'
 alias ls="ls $LS_COMMON"
-alias ll="ls -lth $LS_COMMON"
+alias ll="ls -lthT $LS_COMMON"
 alias lla="ll -a $LS_COMMON"
 alias tn="tmux new -s"          #tmux new -s session_name           # make new named session
 alias ta="tmux attach -t"       #tmux attach -t session_name        # attach to exist session (allowing shared sessions)
@@ -140,3 +139,5 @@ export PATH="/Users/deep/.local/bin:$PATH"
 #Add PYTHONPATH
 #It augments the default search path for module files. The format is the same as the shell’s PATH.
 export PYTHONPATH="$PYTHONPATH:/usr/local/google_appengine"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
