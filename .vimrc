@@ -144,7 +144,8 @@ let g:NERDTreeWinSize = 20
 "Shortcut to open NERDTree
 :command NE NERDTree
 "Open a NERDTree automatically when vim starts up
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree | wincmd p
+map <silent> <C-l> :NERDTreeFocus<CR>
 
 """"""vim-javascript configurations""""""""
 """""""""""""""""""""""""""""""""""""""""""
@@ -161,3 +162,10 @@ let g:javascript_plugin_flow = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+
+
+""""""Switching next/prev buffers""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
+nmap <Tab> :bn<cr>
+nmap <S-Tab> :bp<cr>
+nnoremap <S-f> :buffers<CR>:buffer<Space>
