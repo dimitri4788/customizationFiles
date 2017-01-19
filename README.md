@@ -2,11 +2,12 @@ Description
 -----------
 My customization files
 
-- .vimrc
 - .bashrc
-- .tmux.conf
 - .gitconfig
-- .git-completion.bash (thirdparty; not present in this repo)
+- .git-completion.bash (thirdparty; not written by me)
+- .npmrc
+- .vimrc
+- .tmux.conf
 
 .vim directory structure
 ------------------------
@@ -28,3 +29,4 @@ My customization files
 
 Author
 ------
+Deep Aggarwal
