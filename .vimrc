@@ -169,3 +169,4 @@ let g:javascript_plugin_flow = 1
 nmap <Tab> :bn<cr>
 nmap <S-Tab> :bp<cr>
 nnoremap <S-f> :buffers<CR>:buffer<Space>
+nmap <C-c> :Bclose<cr>
