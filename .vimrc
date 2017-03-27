@@ -83,8 +83,8 @@ set grepprg=grep\ -nr
 "Set indents to 4. Also making it for C programs.
 "set autoindent
 "set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 "Auto indent after a {
@@ -184,3 +184,6 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+"Automatically removing all trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
