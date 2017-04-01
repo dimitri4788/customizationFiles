@@ -12,6 +12,11 @@ if [ -z "$PS1" ]; then
    return
 fi
 
+# Set the iTerm tab title to the current directory, not full path
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+fi
+
 #export TERM=xterm-color
 export TERM=screen-256color
 
