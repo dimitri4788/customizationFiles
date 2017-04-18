@@ -80,7 +80,7 @@ set grepprg=grep\ -nr
 "Set textwidth
 "set textwidth=80
 
-"Set indents to 4. Also making it for C programs.
+"Set indents to 2. Also making it for C programs.
 "set autoindent
 "set smartindent
 set tabstop=2
@@ -91,7 +91,7 @@ set expandtab
 set cindent
 
 "Set <Tab> key insert 4 spaces
-"set softtabstop=4
+"set softtabstop=2
 
 "Switch on the ignorecase option
 set ignorecase
@@ -150,10 +150,10 @@ map <silent> <C-l> :NERDTreeFocus<CR>
 """"""vim-javascript configurations""""""""
 """""""""""""""""""""""""""""""""""""""""""
 "http://vimawesome.com/plugin/vim-javascript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 0
-let g:javascript_plugin_flow = 1
-
+"let g:javascript_plugin_jsdoc = 1
+"let g:javascript_plugin_ngdoc = 0
+"let g:javascript_plugin_flow = 1
+"
 "Syntastic variables: http://vimawesome.com/plugin/syntastic
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -187,3 +187,7 @@ vnoremap <silent> # :<C-U>
 
 "Automatically removing all trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
+
+"Set Vue.js native filetype to html. This allows indentation to work
+" as expected and highlights the code as well
+au BufRead,BufNewFile *.vue set filetype=html
