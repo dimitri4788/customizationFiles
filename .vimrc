@@ -80,18 +80,18 @@ set grepprg=grep\ -nr
 "Set textwidth
 "set textwidth=80
 
-"Set indents to 2. Also making it for C programs.
+"Set indents to 4. Also making it for C programs.
 "set autoindent
 "set smartindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "Auto indent after a {
 set cindent
 
 "Set <Tab> key insert 4 spaces
-"set softtabstop=2
+"set softtabstop=4
 
 "Switch on the ignorecase option
 set ignorecase
@@ -146,23 +146,9 @@ let g:NERDTreeWinSize = 20
 "Open a NERDTree automatically when vim starts up
 "autocmd vimenter * NERDTree | wincmd p
 map <silent> <C-l> :NERDTreeFocus<CR>
-
-""""""vim-javascript configurations""""""""
-"""""""""""""""""""""""""""""""""""""""""""
-"http://vimawesome.com/plugin/vim-javascript
-"let g:javascript_plugin_jsdoc = 1
-"let g:javascript_plugin_ngdoc = 0
-"let g:javascript_plugin_flow = 1
-"
-"Syntastic variables: http://vimawesome.com/plugin/syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
+" Change window size
+nmap <S-h> :vertical resize -5<CR>
+nmap <S-l> :vertical resize +5<CR>
 
 """"""Switching next/prev buffers""""""""""
 """""""""""""""""""""""""""""""""""""""""""
@@ -188,6 +174,9 @@ vnoremap <silent> # :<C-U>
 "Automatically removing all trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-"Set Vue.js native filetype to html. This allows indentation to work
+"Set PHP file as html. This allows indentation to work
 " as expected and highlights the code as well
-au BufRead,BufNewFile *.vue set filetype=html
+au BufRead,BufNewFile *.php set filetype=html
+
+" Syntastic JavaScript checker
+let g:syntastic_javascript_checkers=['eslint']
